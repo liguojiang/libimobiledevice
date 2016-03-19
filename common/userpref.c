@@ -424,8 +424,15 @@ userpref_error_t pair_record_generate_keys_and_certs(plist_t pair_record, key_da
 
 	BN_set_word(e, 65537);
 
-	RSA_generate_key_ex(root_keypair, 2048, e, NULL);
-	RSA_generate_key_ex(host_keypair, 2048, e, NULL);
+	//RSA_generate_key_ex(root_keypair, 2048, e, NULL);
+	//RSA_generate_key_ex(host_keypair, 2048, e, NULL);
+	
+	/*
+	 *	FIXME
+	 * 	MIPS devices cpu too low, so 2048 -> 32
+	 */
+	RSA_generate_key_ex(root_keypair, 32, e, NULL);
+	RSA_generate_key_ex(host_keypair, 32, e, NULL);
 
 	BN_free(e);
 
