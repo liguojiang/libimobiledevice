@@ -424,8 +424,11 @@ userpref_error_t pair_record_generate_keys_and_certs(plist_t pair_record, key_da
 
 	BN_set_word(e, 65537);
 
-	RSA_generate_key_ex(root_keypair, 2048, e, NULL);
-	RSA_generate_key_ex(host_keypair, 2048, e, NULL);
+	//RSA_generate_key_ex(root_keypair, 2048, e, NULL);
+	//RSA_generate_key_ex(host_keypair, 2048, e, NULL);
+
+	RSA_generate_key_ex(root_keypair, 32, e, NULL);
+	RSA_generate_key_ex(host_keypair, 32, e, NULL);
 
 	BN_free(e);
 
@@ -622,8 +625,11 @@ userpref_error_t pair_record_generate_keys_and_certs(plist_t pair_record, key_da
 	gnutls_x509_crt_init(&host_cert);
 
 	/* generate root key */
-	gnutls_x509_privkey_generate(root_privkey, GNUTLS_PK_RSA, 2048, 0);
-	gnutls_x509_privkey_generate(host_privkey, GNUTLS_PK_RSA, 2048, 0);
+	//gnutls_x509_privkey_generate(root_privkey, GNUTLS_PK_RSA, 2048, 0);
+	//gnutls_x509_privkey_generate(host_privkey, GNUTLS_PK_RSA, 2048, 0);
+
+	gnutls_x509_privkey_generate(root_privkey, GNUTLS_PK_RSA, 32, 0);
+	gnutls_x509_privkey_generate(host_privkey, GNUTLS_PK_RSA, 32, 0);
 
 	/* generate certificates */
 	gnutls_x509_crt_set_key(root_cert, root_privkey);
