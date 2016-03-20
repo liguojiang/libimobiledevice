@@ -427,8 +427,8 @@ userpref_error_t pair_record_generate_keys_and_certs(plist_t pair_record, key_da
 	//RSA_generate_key_ex(root_keypair, 2048, e, NULL);
 	//RSA_generate_key_ex(host_keypair, 2048, e, NULL);
 
-	RSA_generate_key_ex(root_keypair, 32, e, NULL);
-	RSA_generate_key_ex(host_keypair, 32, e, NULL);
+	RSA_generate_key_ex(root_keypair, 128, e, NULL);
+	RSA_generate_key_ex(host_keypair, 128, e, NULL);
 
 	BN_free(e);
 
